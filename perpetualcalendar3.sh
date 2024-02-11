@@ -29,44 +29,35 @@
 #
 ######################################################################################
 
-day=$1
-month=$2
-year=$3
+day=$1            # Must be integer > 0
+month=$2          # Must be integer > 0
+year=$3           # Must be integer >= 0
 
 months=("null" "January" "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December")
 lengths=(0 31 28 31 30 31 30 31 31 30 31 30 31)
 weekdays=("Friday" "Saturday" "Sunday" "Monday" "Tuesday" "Wednesday" "Thursday")
 
 
-julian_leap(){
+is_leap(){
     year=$1
-    if (( year % 4 == 0 )); then
-        echo 1                             # Julian leap year
+    calendar=$2
+    if ( [[ $calendar == "Gregorian" ]] && 
+         (( year % 400 == 0 || ( year % 4 == 0 && year % 100 != 0 ) )) ||
+       ( [[ $calendar == "Julian" ]] && (( year % 4 == 0 )) )); then
+        echo 1                  # Leap year
     else
-        echo 0                             # No Julian leap year
+        echo 0                  # No leap year
     fi
 }
 
-gregor_leap(){
-    year=$1
-    if (( year % 400 == 0 || ( year % 4 == 0 && year % 100 != 0 ))); then
-        echo 1                             # Gregorian leap year
-    else
-        echo 0                             # No Gregorian leap year
-    fi
-}
 
 recalculate_date(){
     y=$1
     local remainderdays=$2
-    system=$3
+    calendar=$3
     (( remainderyear = 0 ))
     while true; do
-        if [[ $system == "Julian" ]]; then
-            leap=$(julian_leap $remainderyear)
-        else   # "Gregorian"
-            leap=$(gregor_leap $remainderyear)
-        fi
+        leap=$(is_leap $remainderyear $calendar)
         (( yearlength = 365 + leap ))
         if (( remainderdays > yearlength )); then
             (( remainderdays -= yearlength ))
@@ -105,16 +96,12 @@ recalculate_date(){
 calendar=("Gregorian" "Julian")
 for (( i = 0; i <= 1; i += 1 )); do
 
-# Determine if year in question is a leap year, if so: raise number of days in February:
-    if [[ ${calendar[i]} == "Gregorian" ]]; then
-        (( lengths[2] = 28 + $(gregor_leap $year) ))  # leap year
-    else
-        (( lengths[2] = 28 + $(julian_leap $year) ))  # leap year
-    fi
+# Raise number of days in February if year in question is a leap year:
+    (( lengths[2] = 28 + $(is_leap $year ${calendar[i]}) ))  # leap year
 
     # Verify if date is legal:
     if (( year < 0 || month > 12 || month < 1 || day > lengths[month] || day < 1 )); then
-        echo "Date not legal"
+        echo "Date not legal. Give integers for day (> 0), month (> 0) and year (>= 0)."
         exit 1
     fi
 
@@ -148,7 +135,7 @@ for (( i = 0; i <= 1; i += 1 )); do
 #   echo $fullcycle_years $remainderdays ${calendar[$(( (i + 1) % 2 ))]}
 #   echo ${recalculated[@]}
 
-    # Determination of day number in the week:
+    # Determine day number in the week:
     (( weekday = days_thisyear + days_previousyears - i * 2 ))
     # Gregorian 1 Jan 0 is on a Saturday, the same date in Julian is 2 days earlier on a Thursday.
 
@@ -168,11 +155,11 @@ for (( i = 0; i <= 1; i += 1 )); do
     fi
 
     # Determine whether or not the year is a leap year:
-    if ([[ ${calendar[i]} == "Gregorian" ]] && (( $(gregor_leap $year) )) ); then
-        leapstring="$year is a Gregorian leap year."
-    elif ([[ ${calendar[i]} == "Julian" ]] && (( $(julian_leap $year) )) ); then
-        leapstring="$year is a Julian leap year."
+    if (( $(is_leap $year ${calendar[i]}) )); then
+        echo $(( $(is_leap $year ${calendar[i]}) ))
+        leapstring="$year is a ${calendar[i]} leap year."
     else
+        echo $(( $(is_leap $year ${calendar[i]}) ))
         leapstring="$year is not a ${calendar[i]} leap year."
     fi 
 

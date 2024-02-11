@@ -1,7 +1,7 @@
 #!/bin/bash
 # Naam: perpetualcalendar3a.sh
 # Auteur: Rob Toscani
-# Datum: 09-02-2024
+# Datum: 11-02-2024
 # Toelichting:
 # Eeuwigdurende kalender - Zowel Gregoriaanse als Juliaanse kalender
 # Geijkt op https://en.wikipedia.org/wiki/Perpetual_calendar
@@ -30,26 +30,19 @@
 #
 ######################################################################################
 
-day=$1
-month=$2
-year=$3
+day=$1              # Must be integer > 0
+month=$2            # Must be integer > 0
+year=$3             # Must be integer >= 0
 date_now=$(date "+%Y%m%d")
 
 awk -v day="$day" -v month="$month" -v year="$year" -v date_now="$date_now" \
-    'function julian_leap(year)
+    'function is_leap(year, calender)
     {
-        if (year % 4 == 0)
-            return 1                             # Julian leap year
+        if ((calender == "Gregorian" && (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0))) ||
+            (calender == "Julian" && year % 4 == 0))
+            return 1           # Leap year
         else
-            return 0                             # No Julian leap year
-    }
-
-    function gregor_leap(year)
-    {
-        if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0))
-            return 1                             # Gregorian leap year
-        else
-            return 0                             # No Gregorian leap year
+            return 0           # No leap year
     }
 
     function recalculate_date(fullcycle_yrs, remaindays, calendar)
@@ -57,11 +50,8 @@ awk -v day="$day" -v month="$month" -v year="$year" -v date_now="$date_now" \
         y = fullcycle_yrs
         remainyear = 0
         while (1){
-            if (calendar == "Julian")
-                leap = julian_leap(remainyear)
-            else     # "Gregorian"
-                leap = gregor_leap(remainyear)
-            yearlength = 365 + leap
+            leap = is_leap(remainyear, calendar)
+            yearlength = 365 + is_leap(remainyear, calendar)
             if (remaindays > yearlength){
                 remaindays -= yearlength
                 y += 1
@@ -139,15 +129,12 @@ awk -v day="$day" -v month="$month" -v year="$year" -v date_now="$date_now" \
 
     for (i = 0; i <= 1; i += 1 ){
 
-        # Determine if year in question is a leap year, if so: raise number of days in February:
-        if (calendar[i] == "Gregorian")
-            lengths[2] = 28 + gregor_leap(year)  # leap year
-        else
-            lengths[2] = 28 + julian_leap(year)  # leap year
+        # Raise number of days in February if year in question is a leap year:
+        lengths[2] = 28 + is_leap(year, calendar[i])  # leap year
 
         # Verify if date is legal:
         if (year < 0 || month > 12 || month < 1 || day > lengths[month] || day < 1){
-            print "Date not legal"
+            print "Date not legal. Give integers for day (> 0), month (> 0) and year (>= 0)."
             exit
         }
 
@@ -180,7 +167,7 @@ awk -v day="$day" -v month="$month" -v year="$year" -v date_now="$date_now" \
 #       print fullcycle_years, remainderdays, calendar[(i + 1) % 2]
 #       print recalculated[1], recalculated[2], recalculated[3]
 
-        # Determination of day number in the week:
+        # Determine day number in the week:
         weekday = days_thisyear + days_previousyears - i * 2
         # Gregorian 1 Jan 0 is on a Saturday, the same date in Julian is 2 days earlier on a Thursday.
 
@@ -201,10 +188,8 @@ awk -v day="$day" -v month="$month" -v year="$year" -v date_now="$date_now" \
         }
 
         # Determine whether or not the year is a leap year:
-        if (calendar[i] == "Gregorian" && gregor_leap(year))
-            leapstring = year" is a Gregorian leap year."
-        else if (calendar[i] == "Julian" && julian_leap(year))
-            leapstring = year" is a Julian leap year."
+        if (is_leap(year, calendar[i]))
+            leapstring = year" is a "calendar[i]" leap year."
         else
             leapstring = year" is not a "calendar[i]" leap year."
 

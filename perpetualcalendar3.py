@@ -32,37 +32,28 @@
 import sys
 import time
 
-day       = int(sys.argv[1])
-month     = int(sys.argv[2])
-year      = int(sys.argv[3])
+day       = int(sys.argv[1])            # Must be integer > 0
+month     = int(sys.argv[2])            # Must be integer > 0
+year      = int(sys.argv[3])            # Must be integer >= 0
 
 months   = { 1:"January",2:"February",3:"March",4:"April",5:"May",6:"June",7:"July",8:"August",9:"September",10:"October",11:"November",12:"December" }
 lengths  = { 1:31, 2:28, 3:31, 4:30, 5:31, 6:30, 7:31, 8:31, 9:30, 10:31, 11:30, 12:31 }
 weekdays = { 0:"Friday", 1:"Saturday", 2:"Sunday", 3:"Monday", 4:"Tuesday", 5:"Wednesday", 6:"Thursday" }
 
 
-def julian_leap(year):
-    if year % 4 == 0:
-        return 1                             # Julian leap year
+def is_leap(year, calendar):
+    if (calendar == "Gregorian" and (year % 400 == 0 or ( year % 4 == 0 and year % 100 != 0 ))) or \
+       (calendar == "Julian" and year % 4 == 0):
+        return 1             # Leap year
     else:
-        return 0                             # No Julian leap year
+        return 0             # No leap year
 
 
-def gregor_leap(year):
-    if (year % 400 == 0 or ( year % 4 == 0 and year % 100 != 0 )):
-        return 1                             # Gregorian leap year
-    else:
-        return 0                             # No Gregorian leap year
-
-
-def recalculate_date(fullcycle_years, remainderdays, system):
+def recalculate_date(fullcycle_years, remainderdays, calendar):
     y = fullcycle_years
     remainderyear = 0
     while True:
-        if system == "Julian":
-            leap = julian_leap(remainderyear)
-        else:   # "Gregorian"
-            leap = gregor_leap(remainderyear)
+        leap = is_leap(remainderyear, calendar)
         yearlength = 365 + leap
         if remainderdays > yearlength:
             remainderdays -= yearlength
@@ -95,11 +86,8 @@ def recalculate_date(fullcycle_years, remainderdays, system):
 calendar = ["Gregorian", "Julian"]
 for i in (0, 1):
 
-# Determine if year in question is a leap year, if so: raise number of days in February:
-    if calendar[i] == "Gregorian":
-        lengths[2] = 28 + gregor_leap(year)     # leap year
-    else:
-        lengths[2] = 28 + julian_leap(year)     # leap year
+# Raise number of days in February if year in question is a leap year:
+    lengths[2] = 28 + is_leap(year, calendar[i])     # leap year
 
     # Verify if date is legal:
     if year < 0 or month > 12 or month < 1 or day > lengths[month] or day < 1:
@@ -132,7 +120,7 @@ for i in (0, 1):
 #   print(fullcycle_years, remainderdays, calendar[(i+1)%2])
 #   print(recalculated)
 
-    # Determination of day number in the week:
+    # Determine day number in the week:
     weekday = days_thisyear + days_previousyears - i * 2
     # Gregorian 1 Jan 0 is on a Saturday, the same date in Julian is 2 days earlier on a Thursday.
 
@@ -152,17 +140,15 @@ for i in (0, 1):
         be = "will be"
 
     # Determine whether or not the year is a leap year:
-    if calendar[i] == "Gregorian" and gregor_leap(year) == 1:
-        leapstring = "is a Gregorian leap year."
-    elif calendar[i] == "Julian" and julian_leap(year) == 1:
-        leapstring = "is a Julian leap year."
+    if is_leap(year, calendar[i]):
+        leapstring = str(year) + " is a " + calendar[i] + " leap year."
     else:
-        leapstring = "is not a " + calendar[i] + " leap year."
+        leapstring = str(year) + " is not a " + calendar[i] + " leap year."
 
     print("\n%-10s: %-2d %s %d =" % (calendar[i], day, months[month], year))
     print("%-10s: %-2d %s %d" % (calendar[(i+1)%2], recalculated[0], months[recalculated[1]], recalculated[2]))
     print("It %s on a %s,\nand %s day nr: %d" % (fall, weekdays[weekday % 7], be, days_thisyear + days_previousyears))
     print("as counted from January 1 of Year 0\non the %s calendar." % (calendar[i]))
-    print(year, leapstring)
+    print(leapstring)
 
 print()
