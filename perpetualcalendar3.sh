@@ -156,10 +156,8 @@ for (( i = 0; i <= 1; i += 1 )); do
 
     # Determine whether or not the year is a leap year:
     if (( $(is_leap $year ${calendar[i]}) )); then
-        echo $(( $(is_leap $year ${calendar[i]}) ))
         leapstring="$year is a ${calendar[i]} leap year."
     else
-        echo $(( $(is_leap $year ${calendar[i]}) ))
         leapstring="$year is not a ${calendar[i]} leap year."
     fi 
 
