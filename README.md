@@ -16,7 +16,7 @@ Any date from the year 0 to very far in the future is supported, with no impact 
 
 # How to use perpetualcalendar:
 In order to use perpetual calendar, supply the following command, with day, month and year as integers in respective order.
-For instance with the Python version, a query for July, 4th, 1776 is done as follows:
+For instance with the Python version, a query for July 4th, 1776 is done as follows:
 
 perpetualcalendar3.py 4 7 1776
 
