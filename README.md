@@ -5,7 +5,7 @@ perpetualcalendar - A program that calculates on what day any given past, presen
 - perpetualcalendar3a.sh - Quicker Bash version with awk code
 
 # Description:
-'perpetual calendar' calculates on which date a date falls, both in our present Gregorian Calendar as in the 
+'perpetual calendar' calculates on which date a date falls, both in our present Gregorian Calendar and in the 
 ancient Julian Calendar, and recalculates the date from Gregorian into Julian and vice versa.
 Additionally, it tells how many days have passed since Jan 1 of year 0, and if the year in question is or isn´t a leap year in any of the two calendars.
 
@@ -15,8 +15,8 @@ Any date from the year 0 to very far in the future is supported, with no impact 
 - Shell with awk: year number up to 5000000
 
 # How to use perpetualcalendar:
-In order to use perpetual calendar, supply the following command, with day, month and year as integers in respective order.
-For instance with the Python version, a query for July 4th, 1776 is done as follows:
+In order to use perpetual calendar, supply the following command, with day, month and year as integer arguments in respective order.
+For instance with the Python version, a query for the 4th of July, 1776 is done as follows:
 
 perpetualcalendar3.py 4 7 1776
 

@@ -221,4 +221,4 @@ awk -v day="$day" -v month="$month" -v year="$year" -v date_now="$date_now" \
 
     printf "\n"
 
-}' <<<""
+}'
