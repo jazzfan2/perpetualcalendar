@@ -2,7 +2,7 @@
 perpetualcalendar - A program that calculates on what day any given past, present or future date falls - on both the Gregorian and Julian Calendars. Three versions are available:
 ## perpetualcalendar3.py
 Python3 version
-## perpetualcalendar3a.sh
+## perpetualcalendar3.sh
 Shell (Bash) version
 ## perpetualcalendar3a.sh
 Quicker Bash version with awk code
