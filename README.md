@@ -1,19 +1,25 @@
 # Project’s Title
-This is the name of the project. It describes the whole project in few words and helps people understand the primary goal and aim.
+perpetualcalendar - A program that calculates on what day any given past, present or future date falls - both Gregorian & Julian calendars. Three versions are available:
+## perpetualcalendar3.py
+Python3 version
+## perpetualcalendar3a.sh
+Shell (Bash) version
+## perpetualcalendar3a.sh
+Quicker Bash version with awk code
 
 # Description:
-Your description is an essential part of your project. A well-maintained description allows you to show off your work to other developers as well as potential employers.
+'perpetual calendar' calculates on which date a date falls, both in our present Gregorian Calendar as in the 
+ancient Julian Calendar, and recalculates the date from Gregorian into Julian and vice versa.
+Additionally, it tells if the year in question is or isn ´t a leap year in any of the two calendars.
 
-# How to Use Your Project:
-Provide instructions and examples so that users or contributors can use the project. This will make it easy for them so that if they encounter a problem, they will always have a place of reference.
+Any date from the year 0 to very far in the future is supported with no impact on the programs speed:
+- Python: year number unlimited
+- Shell: year number up to 5 million
 
-# Credits:
-If you have worked on the project as a team, list your team members. You should also include their GitHub profiles.
+# How to use :
+In order to use perpetual calendar, supply the following command, with day, month and year as integers in repective order, fo instance July, 4th, 1776 (example with the Python version):
 
+perpetualcalendar3.py 4 7 1776
 
-# Heading level 1
-## Heading level 2
-### Heading level 3
-#### Heading level 4
-##### Heading level 5
-###### Heading level 6
+# Author:
+Written by Rob Toscani (rob_toscani@yahoo.com).
