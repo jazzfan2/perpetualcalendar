@@ -1,5 +1,5 @@
 # Project’s Title
-perpetualcalendar - A program that calculates on what day any given past, present or future date falls - both Gregorian & Julian calendars. Three versions are available:
+perpetualcalendar - A program that calculates on what day any given past, present or future date falls - on both the Gregorian and Julian Calendars. Three versions are available:
 ## perpetualcalendar3.py
 Python3 version
 ## perpetualcalendar3a.sh
@@ -16,7 +16,7 @@ Any date from the year 0 to very far in the future is supported with no impact o
 - Python: year number unlimited
 - Shell: year number up to 5 million
 
-# How to use :
+# How to use perpetualcalendar:
 In order to use perpetual calendar, supply the following command, with day, month and year as integers in repective order, fo instance July, 4th, 1776 (example with the Python version):
 
 perpetualcalendar3.py 4 7 1776
