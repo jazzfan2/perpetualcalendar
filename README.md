@@ -19,28 +19,40 @@ Any date from the year 0 to very far in the future is supported, with no impact 
 
 # How to use perpetualcalendar:
 In order to use perpetual calendar, supply the following command, with day, month and year as integers in respective order.
-For instance, a query for July, 4th, 1776 (example with the Python version):
+For instance with the Python version, a query for July, 4th, 1776 is done as follows:
 
 perpetualcalendar3.py 4 7 1776
 
-gives the following result
+giving following result:
 
 Gregorian : 4  July 1776 = 
+
 Julian    : 23 June 1776 
+
 It fell on a Thursday, 
+
 and was day nr: 648857 
+
 as counted from January 1 of Year 0 
+
 on the Gregorian calendar. 
+
 1776 is a Gregorian leap year. 
 
-Julian    : 4  July 1776 = 
-Gregorian : 15 July 1776 
-It fell on a Monday, 
-and was day nr: 648870 
-as counted from January 1 of Year 0 
-on the Julian calendar. 
-1776 is a Julian leap year. 
 
+Julian    : 4  July 1776 = 
+
+Gregorian : 15 July 1776 
+
+It fell on a Monday, 
+
+and was day nr: 648870 
+
+as counted from January 1 of Year 0 
+
+on the Julian calendar. 
+
+1776 is a Julian leap year. 
 
 
 # Author:
