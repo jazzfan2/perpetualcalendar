@@ -15,7 +15,7 @@ Any date from the year 0 to very far in the future is supported, with no impact 
 - Shell with awk: year number up to 5000000
 
 # How to use perpetualcalendar:
-In order to use perpetual calendar, supply the name of the program as the command, with day, month and year as integer arguments in respective order.
+In order to use perpetual calendar, supply the name of the program as the command, followed by day, month and year as integer arguments in respective order.
 For instance with the Python version, a query for the 4th of July, 1776 is done as follows:
 
 
