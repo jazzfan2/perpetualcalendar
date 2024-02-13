@@ -18,13 +18,15 @@ Any date from the year 0 to very far in the future is supported, with no impact 
 In order to use perpetual calendar, supply the following command, with day, month and year as integer arguments in respective order.
 For instance with the Python version, a query for the 4th of July, 1776 is done as follows:
 
-./perpetualcalendar3.py 4 7 1776
+
+	./perpetualcalendar3.py 4 7 1776
+
 
 ... rendering following result:
 
-'Gregorian : 4  July 1776 = Julian    : 23 June 1776'
+Gregorian : 4  July 1776 = Julian    : 23 June 1776
 
-'It fell on a Thursday, and was day nr: 648857 as counted from January 1 of Year 0 on the Gregorian calendar.'
+It fell on a Thursday, and was day nr: 648857 as counted from January 1 of Year 0 on the Gregorian calendar.
 
 1776 is a Gregorian leap year.
 
