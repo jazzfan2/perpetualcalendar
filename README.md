@@ -5,7 +5,7 @@ perpetualcalendar - A program that calculates on what day any given past, presen
 - perpetualcalendar3a.sh - Quicker Bash version with awk code
 
 # Description:
-'perpetual calendar' calculates on which date a date falls, both in our present Gregorian Calendar and in the 
+'perpetual calendar' calculates on which day a date falls, both in our present Gregorian Calendar and in the 
 ancient Julian Calendar, and recalculates the date from Gregorian into Julian and vice versa.
 Additionally, it tells how many days have passed since Jan 1 of year 0, and if the year in question is or isn´t a leap year in any of the two calendars.
 
