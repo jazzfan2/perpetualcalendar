@@ -23,7 +23,7 @@ For instance with the Python version, a query for July, 4th, 1776 is done as fol
 
 perpetualcalendar3.py 4 7 1776
 
-giving following result:
+... rendering following result:
 
 Gregorian : 4  July 1776 = Julian    : 23 June 1776 
 
