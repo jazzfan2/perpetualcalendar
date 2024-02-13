@@ -1,4 +1,4 @@
-# Project’s Title
+# Name: perpetualcalendar 
 perpetualcalendar - A program that calculates on what day any given past, present or future date falls - on both the Gregorian and Julian Calendars. Three versions are available:
 ## perpetualcalendar3.py
 Python3 version
