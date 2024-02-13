@@ -7,7 +7,7 @@ perpetualcalendar - A program that calculates on what day any given past, presen
 # Description:
 'perpetual calendar' calculates on which date a date falls, both in our present Gregorian Calendar as in the 
 ancient Julian Calendar, and recalculates the date from Gregorian into Julian and vice versa.
-Additionally, it tells if the year in question is or isn ´t a leap year in any of the two calendars.
+Additionally, it tells how many days have passed since Jan 1 of year 0, and if the year in question is or isn ´t a leap year in any of the two calendars.
 
 Any date from the year 0 to very far in the future is supported, with no impact on the program's speed:
 - Python: year number unlimited
