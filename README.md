@@ -25,16 +25,12 @@ For instance with the Python version, a query for the 4th of July, 1776 is done 
 ... rendering following result:
 
 	Gregorian : 4  July 1776 = Julian    : 23 June 1776
-
 	It fell on a Thursday, and was day nr: 648857 as counted from January 1 of Year 0 on the Gregorian calendar.
-
 	1776 is a Gregorian leap year.
 
 
 	Julian    : 4  July 1776 = Gregorian : 15 July 1776
-
 	It fell on a Monday, and was day nr: 648870 as counted from January 1 of Year 0 on the Julian calendar.
-
 	1776 is a Julian leap year.
 
 
