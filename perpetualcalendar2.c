@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
         if(jdate[2] > y && gdate[2] > y)
             break;
 
-        weekday += 1;
+        weekday++;
 
         jleap = lengths[2] + julian_leap(jdate[2]);
         gleap = lengths[2] + gregor_leap(gdate[2]);
@@ -105,24 +105,24 @@ void increment(long *date, int leap, int *lengths)
         *d = 1;
     }
     else                                     // Any other date
-        *d += 1;
+        (*d)++;
 }
 
 
 int julian_leap(long year)
 {
     if(year % 4 == 0)
-	    return 1;                            // Julian leap year
+        return 1;                            // Julian leap year
     else
-	    return 0;                            // No Julian leap year
+        return 0;                            // No Julian leap year
 }
 
 
 int gregor_leap(long year)
 {
     if(year % 400 == 0 || ( year % 4 == 0 && year % 100 != 0 ))
-	    return 1;                            // Gregorian leap year
+        return 1;                            // Gregorian leap year
     else
-	    return 0;                            // No Gregorian leap year
+        return 0;                            // No Gregorian leap year
 }
 
