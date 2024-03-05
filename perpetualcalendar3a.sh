@@ -188,15 +188,18 @@ awk -v day="$day" -v month="$month" -v year="$year" -v date_now="$date_now" \
         weekday = days_thisyear + days_previousyears - i * 2
         # Gregorian 1 Jan 0 is on a Saturday, the same date in Julian is 2 days earlier on a Thursday.
 
-        date_asked = year * 10000 + month * 100 + day
+        if (calendar[i] == "Gregorian")
+            date_gregor = year * 10000 + month * 100 + day
+        else
+            date_gregor = recalculated[3] * 10000 + recalculated[2] * 100 + recalculated[1]
 
         # Determine past, present or future tense:
-        if (date_asked < date_now){
+        if (date_gregor < date_now){
             fall = "fell"
             be = "was"
         }
-        else if (date_asked == date_now){
-            fall = "falls"
+        else if (date_gregor == date_now){
+            fall = "is TODAY, falls"
             be = "is"
         }
         else{

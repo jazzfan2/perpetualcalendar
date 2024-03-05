@@ -158,14 +158,18 @@ for (( i = 0; i <= 1; i += 1 )); do
     # Gregorian 1 Jan 0 is on a Saturday, the same date in Julian is 2 days earlier on a Thursday.
 
     date_now=$(date "+%Y%m%d")
-    (( date_asked = year * 10000 + month * 100 + day ))
+    if [[ ${calendar[i]} == "Gregorian" ]]; then
+        (( date_gregor = year * 10000 + month * 100 + day ))
+    else
+        (( date_gregor = ${recalculated[2]} * 10000 + ${recalculated[1]} * 100 + ${recalculated[0]} ))
+    fi
 
     # Determine past, present or future tense:
-    if (( date_asked < date_now )); then
+    if (( date_gregor < date_now )); then
         fall="fell"
         be="was"
-    elif (( date_asked == date_now )); then
-        fall="falls"
+    elif (( date_gregor == date_now )); then
+        fall="is TODAY, falls"
         be="is"
     else
         fall="will fall"

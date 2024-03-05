@@ -143,14 +143,17 @@ for i in (0, 1):
 
 
     date_now = int(time.strftime("%Y%m%d"))
-    date_asked = year * 10000 + month * 100 + day
+    if calendar[i] == "Gregorian":
+        date_gregor = year * 10000 + month * 100 + day
+    else:
+        date_gregor = recalculated[2] * 10000 + recalculated[1] * 100 + recalculated[0]
 
     # Determine past, present or future tense:
-    if date_asked < date_now:
+    if date_gregor < date_now:
         fall = "fell"
         be = "was"
-    elif date_asked == date_now:
-        fall = "falls"
+    elif date_gregor == date_now:
+        fall = "is TODAY, falls"
         be = "is"
     else:
         fall = "will fall"
