@@ -10,16 +10,36 @@ Bij Juliaans geldt dat elk door 4 deelbaar jaar een schrikkeljaar is.
 
 De Juliaanse kalender begint op zaterdag 1 jan 01, zie:
 https://nl.wikipedia.org/wiki/Bestand:Ewiger_Julianischer_Kalender.png
-Naar 1 jan 0 (begin Chr. jaartelling) terug-extrapoleren valt die datum (eigenlijk 1 jan 1 voor Chr. 
+Naar 1 jan 0 (begin Chr. jaartelling) terug-extrapoleren valt die datum 
+(eigenlijk 1 jan 1 voor Chr. 
 want de 0 kende men toen nog niet) bij Juliaans op een donderdag.
 Bij Gregoriaans geldt voor 1 jan 0 echter de zaterdag (!), zie:
 https://en.wikipedia.org/wiki/Perpetual_calendar#/media/File:Permanent_Calendar_gregorian.png
-Stelling RJT: Juliaans loopt op dat moment (initieel) dus 2 dagen voor, ofwel op 1 jan 0 Gregoriaans 
-(virtueel, op zaterdag) is het reeds 3 jan 0 Juliaans (1 jan 0 was het daar op donderdag al geweest).
-Dit klopt met de sprong die is uitgevoerd bij invoering van de Gregoriaanse kalender in 1582:
-Op do 4 okt Juliaans volgt vri 15 okt Gregoriaans, dus 5 okt wordt 15 okt ofwel een correctie van 10
-dagen. Dit komt overeen met het 2 dagen voorlopen minus de 12 extra schrikkeldagen bij de eeuwjaren
-niet deelbaar door 400 t/m 1500 bij Juliaans t.o.v. Gregoriaans.
+Stelling RJT: Juliaans loopt op dat moment (initieel) dus 2 dagen voor, ofwel op 
+1 jan 0 Gregoriaans (virtueel, op zaterdag) is het reeds 3 jan 0 Juliaans 
+(1 jan 0 was het daar op donderdag al geweest).
+Dit klopt met de sprong die is uitgevoerd bij invoering van de Gregoriaanse kalender
+in 1582: Op do 4 okt Juliaans volgt vri 15 okt Gregoriaans, dus 5 okt wordt 15 okt
+ofwel een correctie van 10 dagen. Dit komt overeen met het 2 dagen voorlopen minus
+de 12 extra schrikkeldagen bij de eeuwjaren niet deelbaar door 400 t/m 1500 bij
+Juliaans t.o.v. Gregoriaans.
+
+######################################################################################
+
+Copyright (C) 2024 Rob Toscani <rob_toscani@yahoo.com>
+
+perpetualcalendar2.c is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+perpetualcalendar2.c is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ######################################################################################
 
